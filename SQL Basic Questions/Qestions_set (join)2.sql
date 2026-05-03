@@ -49,8 +49,9 @@ select distinct CustomerName from Customers c inner join Orders o on o.CustomerI
                         on p.ProductID=o.ProductID where price >500
 
 -- 7. Find customers who have ordered the same product more than once .
+  
 select distinct m.customername from
-(select customername,Productid ,count(orderid)[count] from 
-Customers c inner join orders o  on c.customerid= o.customerid
-group by customername ,productid
-having count(orderId)>1 ) m
+                  (select customername,Productid ,count(orderid)[count] from 
+                             Customers c inner join orders o  on c.customerid= o.customerid
+    group by customername ,productid
+      having count(orderId)>1 ) m
